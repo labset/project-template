@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	todogendb "platform/backend/internal/domain/todo/gendb"
+	gendbtodo "platform/backend/internal/gendb/todo"
 
 	"connectrpc.com/connect"
 )
@@ -18,7 +18,7 @@ func dbErrorToAPI(err error, msg string) *connect.Error {
 	return connect.NewError(connect.CodeInternal, fmt.Errorf("%s: %w", msg, err))
 }
 
-func dbTodoToAPI(todo *todogendb.Todo) *todoV1.Todo {
+func dbTodoToAPI(todo *gendbtodo.Todo) *todoV1.Todo {
 	return &todoV1.Todo{
 		Id:          todo.ID.String(),
 		Description: todo.Description,

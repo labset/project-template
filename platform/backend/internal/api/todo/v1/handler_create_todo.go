@@ -3,7 +3,7 @@ package api_todo_v1
 import (
 	todoV1 "api/go-sdk/todo/v1"
 	"context"
-	todogendb "platform/backend/internal/domain/todo/gendb"
+	gendbtodo "platform/backend/internal/gendb/todo"
 
 	"github.com/gofrs/uuid/v5"
 
@@ -22,7 +22,7 @@ func (s *todoService) CreateTodo(
 		Str("description", request.Msg.GetDescription()).
 		Msg("creating todo")
 
-	todo, err := s.store.CreateTodo(ctx, &todogendb.CreateTodoParams{
+	todo, err := s.store.CreateTodo(ctx, &gendbtodo.CreateTodoParams{
 		ID:          id,
 		Description: request.Msg.GetDescription(),
 		Status:      int32(todoV1.TodoStatus_TODO_STATUS_PENDING), // Set initial status to PENDING
