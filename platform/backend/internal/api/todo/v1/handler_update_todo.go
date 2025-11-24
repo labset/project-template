@@ -6,7 +6,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	todogendb "platform/backend/internal/domain/todo/gendb"
+	gendbtodo "platform/backend/internal/gendb/todo"
 
 	"github.com/gofrs/uuid/v5"
 
@@ -53,7 +53,7 @@ func (s *todoService) UpdateTodo(
 	s.applyUpdates(existingTodo, msg)
 
 	// Save updated todo
-	updated, err := s.store.UpdateTodo(ctx, &todogendb.UpdateTodoParams{
+	updated, err := s.store.UpdateTodo(ctx, &gendbtodo.UpdateTodoParams{
 		ID:          existingTodo.ID,
 		Description: existingTodo.Description,
 		Status:      existingTodo.Status,
@@ -70,7 +70,7 @@ func (s *todoService) UpdateTodo(
 	return connect.NewResponse(response), nil
 }
 
-func (s *todoService) applyUpdates(todo *todogendb.Todo, msg *todoV1.UpdateTodoRequest) {
+func (s *todoService) applyUpdates(todo *gendbtodo.Todo, msg *todoV1.UpdateTodoRequest) {
 	updateMask := msg.GetUpdateMask()
 	todoUpdate := msg.GetTodo()
 

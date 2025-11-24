@@ -3,13 +3,13 @@ package api_todo_v1
 import (
 	"api/go-sdk/todo/v1/todoV1connect"
 	"net/http"
-	todogendb "platform/backend/internal/domain/todo/gendb"
+	gendbtodo "platform/backend/internal/gendb/todo"
 
 	"github.com/gin-gonic/gin"
 )
 
 type Dependencies struct {
-	Store todogendb.Querier
+	Store gendbtodo.Querier
 }
 
 func Register(apis *gin.RouterGroup, deps Dependencies) {

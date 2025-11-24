@@ -47,7 +47,7 @@ linters:
             - platform/backend/config
             - platform/backend/data
             - platform/backend/internal/api
-            - platform/backend/internal/domain
+            - platform/backend/internal/gendb
             - connectrpc.com/connect
             - connectrpc.com/cors
             - github.com/gin-contrib/cors

@@ -3,7 +3,7 @@ package api_todo_v1
 import (
 	todoV1 "api/go-sdk/todo/v1"
 	"context"
-	todogendb "platform/backend/internal/domain/todo/gendb"
+	gendbtodo "platform/backend/internal/gendb/todo"
 
 	"connectrpc.com/connect"
 	"github.com/rs/zerolog/log"
@@ -21,7 +21,7 @@ func (s *todoService) ListTodos(
 		Int32("offset", offset).
 		Msg("listing todos")
 
-	todos, err := s.store.ListTodos(ctx, &todogendb.ListTodosParams{
+	todos, err := s.store.ListTodos(ctx, &gendbtodo.ListTodosParams{
 		Limit:  limit,
 		Offset: offset,
 	})
