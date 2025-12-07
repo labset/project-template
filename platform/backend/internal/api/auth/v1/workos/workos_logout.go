@@ -1,8 +1,8 @@
-package api_auth_v1
+package api_auth_v1_workos
 
 import "github.com/gin-gonic/gin"
 
-func (a *authHandler) LoginCallback(ctx *gin.Context) {
+func (w *workosHandler) Logout(ctx *gin.Context) {
 	// TODO implement me
 	panic("implement me")
 }
