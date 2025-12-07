@@ -33,6 +33,14 @@ func Load() Config {
 		Frontend: FrontendConfig{
 			URL: getEnvWithDefault("FRONTEND_URL", "http://localhost:5173"),
 		},
+		WorkOs: WorkOsConfig{
+			APIKey:   getEnvWithDefault("WORKOS_API_KEY", ""),
+			ClientID: getEnvWithDefault("WORKOS_CLIENT_ID", ""),
+			RedirectURI: getEnvWithDefault(
+				"WORKOS_REDIRECT_URI",
+				"http://localhost:8080/auth/v1/login/callback",
+			),
+		},
 	}
 }
 

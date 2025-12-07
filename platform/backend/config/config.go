@@ -13,6 +13,7 @@ type Config struct {
 	Database    DatabaseConfig
 	Session     SessionConfig
 	Frontend    FrontendConfig
+	WorkOs      WorkOsConfig
 }
 
 type EnvironmentConfig struct {
@@ -70,4 +71,10 @@ type SessionConfig struct {
 
 type FrontendConfig struct {
 	URL string
+}
+
+type WorkOsConfig struct {
+	ClientID    string
+	APIKey      string
+	RedirectURI string
 }
