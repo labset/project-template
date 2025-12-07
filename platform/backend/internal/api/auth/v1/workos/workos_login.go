@@ -23,7 +23,7 @@ func (w *workosHandler) Login(ctx *gin.Context) {
 		return
 	}
 
-	authURL, err := w.client.UserManagement().GetAuthorizationUrl(state.String())
+	authURL, err := w.workOsClient.UserManagement().GetAuthorizationUrl(state.String())
 	if err != nil {
 		ctx.AbortWithStatusJSON(
 			http.StatusInternalServerError,

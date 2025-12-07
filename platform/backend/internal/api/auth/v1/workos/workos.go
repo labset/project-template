@@ -10,9 +10,11 @@ const (
 )
 
 type workosHandler struct {
-	client workos.Client
+	workOsClient workos.Client
 }
 
-func NewWorkosHandler() authv1.AuthHandler {
-	return &workosHandler{}
+func NewWorkosHandler(client workos.Client) authv1.AuthHandler {
+	return &workosHandler{
+		workOsClient: client,
+	}
 }
