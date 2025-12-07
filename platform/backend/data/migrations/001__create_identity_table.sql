@@ -23,3 +23,4 @@ CREATE INDEX idx_platform_identity_provider ON platform_identity (provider, exte
 DROP INDEX IF EXISTS idx_platform_identity_provider;
 DROP TABLE IF EXISTS platform_identity;
 DROP TYPE IF EXISTS platform_identity_status;
+DROP TYPE IF EXISTS platform_identity_provider;
