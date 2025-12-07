@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"platform/backend/config"
+	apiauthv1 "platform/backend/internal/api/auth/v1"
 	apimcpv1 "platform/backend/internal/api/mcp/v1"
 	apitodov1 "platform/backend/internal/api/todo/v1"
 
@@ -48,6 +49,9 @@ func setupRouter(cfg config.Config, deps *dependencies) *gin.Engine {
 	router.Use(sessions.Sessions(SessionName, sessionStore))
 
 	// Setup routes
+	authV1 := router.Group("/auth/v1")
+	apiauthv1.Register(authV1, apiauthv1.Dependencies{})
+
 	apis := router.Group("/api")
 	apitodov1.Register(apis, apitodov1.Dependencies{
 		Store: deps.todoStore,
