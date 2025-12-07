@@ -1,13 +1,13 @@
 version: 2
 sql:
   - engine: "postgresql"
-    name: "todos"
-    queries: "./data/queries/todo"
-    schema: "./data/migrations/*_todos_*.sql"
+    name: "tenancy"
+    queries: "./data/queries/tenant"
+    schema: "./data/migrations/*_tenant_*.sql"
     gen:
       go:
-        package: "gendb_todo"
-        out: "./internal/gendb/todo"
+        package: "gendb_tenant"
+        out: "./internal/gendb/tenant"
         emit_result_struct_pointers: true
         emit_params_struct_pointers: true
         emit_prepared_queries: true
