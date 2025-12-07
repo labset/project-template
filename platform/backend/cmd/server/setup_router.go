@@ -51,7 +51,7 @@ func setupRouter(cfg config.Config, deps *dependencies) *gin.Engine {
 	// Setup routes
 	authV1 := router.Group("/auth/v1")
 	apiauthv1.Register(authV1, apiauthv1.Dependencies{
-		WorksOsClient: deps.workOsClient,
+		WorkOsClient: deps.workOsClient,
 	})
 
 	apis := router.Group("/api")

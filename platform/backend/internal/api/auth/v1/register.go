@@ -8,11 +8,11 @@ import (
 )
 
 type Dependencies struct {
-	WorksOsClient workos.Client
+	WorkOsClient workos.Client
 }
 
 func Register(authV1 *gin.RouterGroup, deps Dependencies) {
-	handler := apiauthv1workos.NewWorkosHandler(deps.WorksOsClient)
+	handler := apiauthv1workos.NewWorkosHandler(deps.WorkOsClient)
 
 	authV1.GET("/login", handler.Login)
 	authV1.GET("/login/callback", handler.LoginCallback)
