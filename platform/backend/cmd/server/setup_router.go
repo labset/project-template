@@ -33,6 +33,11 @@ func setupRouter(cfg config.Config, deps *dependencies) *gin.Engine {
 		AllowCredentials: true,
 	}))
 
+	sameSite := http.SameSiteNoneMode
+	if cfg.Environment.IsDevelopment() {
+		sameSite = http.SameSiteLaxMode
+	}
+
 	// Setup session store
 	sessionStore := cookie.NewStore(
 		[]byte(cfg.Session.Secret),
@@ -43,7 +48,7 @@ func setupRouter(cfg config.Config, deps *dependencies) *gin.Engine {
 		MaxAge:   SessionMaxAge,
 		HttpOnly: true,
 		Secure:   true,
-		SameSite: http.SameSiteNoneMode,
+		SameSite: sameSite,
 	})
 
 	router.Use(sessions.Sessions(SessionName, sessionStore))
