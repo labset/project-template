@@ -43,7 +43,7 @@ func setupRouter(cfg config.Config, deps *dependencies) *gin.Engine {
 		MaxAge:   SessionMaxAge,
 		HttpOnly: true,
 		Secure:   true,
-		SameSite: http.SameSiteLaxMode,
+		SameSite: http.SameSiteNoneMode,
 	})
 
 	router.Use(sessions.Sessions(SessionName, sessionStore))
