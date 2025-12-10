@@ -25,8 +25,9 @@ type organisations struct {
 }
 
 func newOrganisations(cfg ClientConfig) Organisations {
-	wrapped := organizations.DefaultClient
-	wrapped.APIKey = cfg.APIKey
+	wrapped := &organizations.Client{
+		APIKey: cfg.APIKey,
+	}
 
 	return &organisations{
 		wrapped: wrapped,

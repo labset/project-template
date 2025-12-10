@@ -9,8 +9,8 @@ import (
 )
 
 type UserManagement interface {
-	GetLogoutUrl(sessionID string) (*url.URL, error)
-	GetAuthorizationUrl(state string) (*url.URL, error)
+	GetLogoutURL(sessionID string) (*url.URL, error)
+	GetAuthorizationURL(state string) (*url.URL, error)
 	AuthenticateWithCode(
 		ctx context.Context,
 		code string,
@@ -23,7 +23,7 @@ type UserManagement interface {
 		ctx context.Context,
 		opts usermanagement.CreateOrganizationMembershipOpts,
 	) (*usermanagement.OrganizationMembership, error)
-	GetJWKS() (*url.URL, error)
+	GetJWKSURL() (*url.URL, error)
 }
 
 type userManagement struct {
@@ -43,11 +43,11 @@ func newUserManagement(cfg ClientConfig) UserManagement {
 	}
 }
 
-func (u *userManagement) GetJWKS() (*url.URL, error) {
+func (u *userManagement) GetJWKSURL() (*url.URL, error) {
 	return u.wrapped.GetJWKSURL(u.clientID)
 }
 
-func (u *userManagement) GetAuthorizationUrl(state string) (*url.URL, error) {
+func (u *userManagement) GetAuthorizationURL(state string) (*url.URL, error) {
 	return u.wrapped.GetAuthorizationURL(usermanagement.GetAuthorizationURLOpts{
 		ClientID:    u.clientID,
 		Provider:    "authkit",
@@ -56,7 +56,7 @@ func (u *userManagement) GetAuthorizationUrl(state string) (*url.URL, error) {
 	})
 }
 
-func (u *userManagement) GetLogoutUrl(sessionID string) (*url.URL, error) {
+func (u *userManagement) GetLogoutURL(sessionID string) (*url.URL, error) {
 	return u.wrapped.GetLogoutURL(usermanagement.GetLogoutURLOpts{
 		SessionID: sessionID,
 	})
