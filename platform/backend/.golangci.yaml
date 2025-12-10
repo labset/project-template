@@ -62,5 +62,6 @@ linters:
             - github.com/pressly/goose/v3
             - github.com/rs/zerolog/log
             - github.com/spf13/cobra
+            - github.com/workos/workos-go/v5
             - golang.org/x/net/http2
             - golang.org/x/net/http2/h2c
